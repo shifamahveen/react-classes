@@ -1,24 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import Demo from './components/Demo';
+import Counter from './components/Counter';
+import Count from './components/Count';
+import Multiple from './components/Multiple';
+import Effect from './components/Effect';
+import Timer from './components/Timer';
+import { useState } from 'react';
 
 function App() {
+
+  const [showComponent, setShowComponent] = useState(true);
+  const [timer, setTimer] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <button onClick={() => setShowComponent(!showComponent)}>Hide</button>
+      {showComponent && <Effect />}
+
+      <button onClick={() => setTimer(!timer)}>
+        {timer ? 'Stop Timer' : 'Start Timer'}
+      </button>
+      
+      {timer &&       <Timer />      }
+      
+    </>
   );
 }
 
